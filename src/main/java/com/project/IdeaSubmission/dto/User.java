@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -60,6 +61,9 @@ public class User {
 	}
 	@OneToMany(mappedBy = "user",cascade = CascadeType.ALL)
 	private List<Topic> topic;
+	
+	@OneToOne(mappedBy = "user",cascade = CascadeType.ALL)
+	private Votes votes;
 	
 	public List<Topic> getTopic() {
 		return topic;

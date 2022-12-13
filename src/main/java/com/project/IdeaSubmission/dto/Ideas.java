@@ -6,6 +6,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
@@ -25,6 +26,16 @@ public class Ideas {
 	@JoinColumn(name="topic_id")
 	@JsonBackReference
 	private Topic topic;
+	
+	@OneToOne
+	@JsonBackReference
+	private Votes votes;
+	
+	@ManyToOne()
+	@JoinColumn(name="pairIdeas_id")
+	@JsonBackReference
+	private PairIdeas pairIdeas;
+	
 
 	public Integer getId() {
 		return id;
